@@ -1,36 +1,44 @@
-# http-kit
+# exlore-http-kit
 
 FIXME: description
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Download from https://github.com/madkins23/explore-http-kit/tree/master
 
 ## Usage
 
-FIXME: explanation
+You could build a standalone jar but I usually:
 
-    $ java -jar http-kit-0.1.0-standalone.jar [args]
+    lein run
+
+or
+
+    lein run all
 
 ## Options
 
-FIXME: listing of options this app accepts.
+The sub-tests can be run with the following names:
 
-## Examples
+* `simple`
+* `nested`
+* `chain`
+* `multi`
+* `my`
 
-...
+For example:
 
-### Bugs
+    lein run simple chain
 
-...
+## Description
 
-### Any Other Sections
-### That You Think
-### Might be Useful
+This Clojure program explores the way `http-kit` callbacks and threads interact.
+See the `intro.md` file for more detail.
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 Marc M. Adkins
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
+
