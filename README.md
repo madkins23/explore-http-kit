@@ -1,6 +1,8 @@
 # exlore-http-kit
 
-FIXME: description
+Explore callbacks and threads in the `http-kit` library for Clojure.
+
+See: http://www.http-kit.org/
 
 ## Installation
 
@@ -24,7 +26,7 @@ The sub-tests can be run with the following names:
 * `nested`
 * `chain`
 * `multi`
-* `my`
+* `pool`
 
 For example:
 

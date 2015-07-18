@@ -11,8 +11,8 @@
             [java.util.concurrent ThreadPoolExecutor LinkedBlockingQueue TimeUnit]
             [org.httpkit PrefixThreadFactory]))
 
-(def all-tests      #{:simple :nested :chain :my :multi})
-(def default-tests  #{:simple :nested :chain :my})
+(def all-tests      #{:simple :nested :chain :pool :multi})
+(def default-tests  #{:simple :nested :chain :pool})
 (def multi-count    5)
 (def secret-url     "https://www.random.org/strings/")
 (def test-url       "http://www.secureone.com")
@@ -222,7 +222,7 @@
         (show-status "Multi" promised)))
     (show-pool))
 
-  (when (contains? tests :my)
+  (when (contains? tests :pool)
     (println "------------- Nested Retry My Pool ----------")
     (let [promised (promise)]
       (http/get test-url {
@@ -232,7 +232,7 @@
       (show-status "Nested" promised)
       (show-pool "My" my-thread-pool)))
 
-  (when (and (contains? tests :multi) (contains? tests :my))
+  (when (and (contains? tests :multi) (contains? tests :pool))
     (println "------------- Multi Retry My Pool -----------")
     (let [promises (repeatedly multi-count promise)]
       (doseq [promised promises]

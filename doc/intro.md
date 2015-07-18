@@ -1,5 +1,7 @@
 # Introduction to explore-http-kit
 
+See: http://www.http-kit.org/
+
 After beating my head against a wall for some days in an enterprise-level
 system using `http-kit` I finally wrote this code to figure out how it worked
 (and why it sometimes did not). This is a fairly narrow exploration,
@@ -18,5 +20,5 @@ The following sections discuss the various tests:
 
 ## `multi`
 
-## `my`
+## `pool`
 
