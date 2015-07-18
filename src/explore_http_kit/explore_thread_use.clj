@@ -15,7 +15,7 @@
 (def default-tests  #{:simple :nested :chain :pool})
 (def multi-count    5)
 (def secret-url     "https://www.random.org/strings/")
-(def test-url       "http://www.secureone.com")
+(def test-url       "http://www.google.com")
 (def timeout-short  3000)
 (def timeout-quick  1000)
 (def timeout-long   (+ timeout-short timeout-quick))

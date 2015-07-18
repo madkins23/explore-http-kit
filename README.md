@@ -10,7 +10,19 @@ Download from https://github.com/madkins23/explore-http-kit/tree/master
 
 ## Usage
 
-You could build a standalone jar but I usually:
+### Standalone
+
+Build standalone jar using:
+
+    lein uberjar
+
+and run as:
+
+    java -jar target/uberjar/explore-http-kit-0.1.0-SNAPSHOT-standalone.jar
+
+### Leiningen
+
+Run using Leiningen:
 
     lein run
 
@@ -20,7 +32,7 @@ or
 
 ## Options
 
-The sub-tests can be run with the following names:
+The sub-tests can be run with any set of the following parameters:
 
 * `simple`
 * `nested`
@@ -31,6 +43,9 @@ The sub-tests can be run with the following names:
 For example:
 
     lein run simple chain
+
+sWithout any options everything but the `multi` test will run.
+Run _all_ tests using the `all` parameter.
 
 ## Description
 
