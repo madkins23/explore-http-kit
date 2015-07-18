@@ -278,6 +278,23 @@ After this test the special thread pool is now full up:
     My pool         high       4
     My pool         max        4
 
+## Conclusions
+
+There is some sort of odd behavior in `http-kit` or some code library it is using.
+I can demonstrate it now in my current home and work environment.
+I fully expect this behavior to go away with some change in Clojure and/or Java version.
+I have no reason to believe that what I'm seeing is an `http-kit` problem.
+
+In order to work around this I can suggest two options:
+
+* chained callbacks so that multiple threads are unecessary and/or
+* using a custom thread pool so that thread behavior is as expected.
+
+Frankly, I would suggest _both_:
+
+* No matter how many threads you configure in your pool they may all need _just one more thread_ at some point.
+* You definitely want more than one thread whether you are chaining or not.
+
 ## FYI
 
 ### Executing from a REPL
@@ -323,23 +340,6 @@ That's sure a lot of object-oriented code hidden away behind a friendly Clojure 
 I'm wondering if the problem is in Clojure, Java, or a chance combination of both.
 Having spent a non-trivial amount of time reading a lot of this code I found nothing
 that looked wrong and obviously, given a different thread pool, nothing _is_ wrong.
-
-## Conclusions
-
-There is some sort of odd behavior in `http-kit` or some code library it is using.
-I can demonstrate it now in my current home and work environment.
-I fully expect this behavior to go away with some change in Clojure and/or Java version.
-I have no reason to believe that what I'm seeing is an `http-kit` problem.
-
-In order to work around this I can suggest two options:
-
-* chained callbacks so that multiple threads are unecessary and/or
-* using a custom thread pool so that thread behavior is as expected.
-
-Frankly, I would suggest _both_:
-
-* No matter how many threads you configure in your pool they may all need _just one more thread_ at some point.
-* You definitely want more than one thread whether you are chaining or not.
 
 ## Notes
 
