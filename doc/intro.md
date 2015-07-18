@@ -5,7 +5,7 @@ See: http://www.http-kit.org/
 After beating my head against a wall for some days in an enterprise-level
 system using `http-kit` I finally wrote this code to figure out how it worked
 (and why it sometimes did not). This is a fairly narrow exploration,
-concentrating on callback handers and why the sometimes block.
+concentrating on callback handlers and why they sometimes block.
 
 There is only a single program in `expore-http-kit.explore-thread-use`.
 It contains a series of "tests" that demonstrate some quirks and solutions.
@@ -280,6 +280,39 @@ After this test the special thread pool is now full up:
 
 ## FYI
 
+### Executing from a REPL
+
+It is possible to execute the code from within a REPL but the output from the
+various callback handlers (on handler thread(s)) doesn't print so you only
+see the final results from the main routine:
+
+    $ lein repl
+    explore-http-kit.explore-thread-use=> (-main "all")
+    ------------- Simple Retry ------------------
+    Simple          status   200
+    ------------- Nested Retry ------------------
+    Nested          status   401
+    ------------- Chain Retry -------------------
+    Chain           status   200
+    ------------- Multi Retry -------------------
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+    ------------- Nested Retry Pool -------------
+    Nested          status   200
+    ------------- Multi Retry Pool --------------
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+    Multi           status   200
+
+[Some of the output was removed from the example above for the sake of brevity.]
+
+### Java Usage
+
 As a side note, I would like to point out that Clojure in `http-kit` is a thin
 layer over a lot of Java. Just compare these two links:<sup>3</sup>
 
@@ -312,7 +345,7 @@ Frankly, I would suggest _both_:
 
 <sup>1</sup> Ubuntu 14.04 running on a Lenovo T430 (4 cores) or HP (2 cores) equipment.
 
-<sup>2</sup> https://www.random.org provides a random string.
+<sup>2</sup> https://www.random.org provides (among others) a random string web service.
 
 <sup>3</sup> Great googly moogly!
 
