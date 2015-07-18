@@ -223,7 +223,7 @@
     (show-pool))
 
   (when (contains? tests :pool)
-    (println "------------- Nested Retry My Pool ----------")
+    (println "------------- Nested Retry Pool -------------")
     (let [promised (promise)]
       (http/get test-url {
           :promise promised
@@ -233,7 +233,7 @@
       (show-pool "My" my-thread-pool)))
 
   (when (and (contains? tests :multi) (contains? tests :pool))
-    (println "------------- Multi Retry My Pool -----------")
+    (println "------------- Multi Retry Pool --------------")
     (let [promises (repeatedly multi-count promise)]
       (doseq [promised promises]
         (http/get test-url {
