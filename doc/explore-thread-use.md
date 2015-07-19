@@ -1,22 +1,58 @@
-# Introduction to explore-http-kit
-
-See: http://www.http-kit.org/
+# `explore-thread-use`
 
 After beating my head against a wall for some days in an enterprise-level
 system using `http-kit` I finally wrote this code to figure out how it worked
 (and why it sometimes did not). This is a fairly narrow exploration,
 concentrating on callback handlers and why they sometimes block.
 
-There is only a single program in `expore-http-kit.explore-thread-use`.
+See: http://www.http-kit.org/
+
+There is only a single program: `expore-http-kit.explore-thread-use`.
 It contains a series of "tests" that demonstrate some quirks and solutions.
+These are not unit tests (there are no unit tests) the program exists to run them.
+
+## Usage
+
+### Standalone
+
+Build standalone jar using:
+
+    lein uberjar
+
+and run as:
+
+    java -jar target/uberjar/explore-http-kit-0.1.0-SNAPSHOT-standalone.jar
+
+### Leiningen
+
+Run using Leiningen:
+
+    lein run
+
+or
+
+    lein run all
+
+### Options
+
+The sub-tests can be run with any set of the following parameters:
+
+* `simple`
+* `nested`
+* `chain`
+* `multi`
+* `pool`
+
+For example:
+
+    lein run simple chain
+
+Without any options everything but the `multi` tests will run.
+Run _all_ tests using the `all` parameter.
 
 ## Individual Tests
 
-The main routine runs through various "tests".
-These are not unit tests, `expore-http-kit.explore-thread-use`
-is intended to explore behavior in and of itself.
-
-The following sections discuss the various tests:
+The main routine runs through various "tests"s:
 
 ### `simple`
 
